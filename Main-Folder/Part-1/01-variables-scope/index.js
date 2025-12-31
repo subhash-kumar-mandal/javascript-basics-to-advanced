@@ -64,7 +64,7 @@ if(true){
 
 
 // function scope 
-//  sorry for use  IIF use here 
+//  sorry for use  IIFEs use here 
 (function sayhi(){
 
     // console.log(game) ese use nhi kar sakte hai ye TDZ mein rehega yaha par
@@ -84,7 +84,7 @@ if(true){
 // console.log(game);  (haam kisi ko bhi function ke bhar access nhi kar sakte hai 
 // console.log(game1); sab function scope follow karte hai yaha tak var bhi karta
 // console.log(game2); hai )
-
+ 
 
 
 
