@@ -9,7 +9,7 @@ This repo is a result of consistent learning and deep practice.
 
 ## 📚 Topics Covered
 
-### 1. Variables & Scope / Hoisting & TDZ
+### 1. [Variables & Scope / Hoisting & TDZ](./01-variables-scope/index.js)
 - var, let, const ( global,block,function )
 - Delacre , Initialize
 - Redeclaration & Reinitialization rules
