@@ -16,7 +16,7 @@ function CreateBiscuit (category,company,name,price,quntity,color){
               this.company= company,
               this.quntity=quntity,
               this.color =color
-             
+              
              };
 
 let b1 = new CreateBiscuit("Chochalete","Parle","KitKat",30,1000,"red");
