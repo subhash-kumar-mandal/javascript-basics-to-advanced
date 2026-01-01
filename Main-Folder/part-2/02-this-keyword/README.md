@@ -207,7 +207,7 @@ const user = {
   }
 };
 
-user.greet();
+user.greet(); 
 ```
 - Output 
 ```js
