@@ -18,7 +18,7 @@ This repo is a result of consistent learning and deep practice.
 
 ---
 
-### 2. Data types (primitives VS non-primitives)
+### 2. [Data types (primitives VS non-primitives)](./02-data-types/)
 - Primitives , Non-Primitives
 - Copy vs Reference behavior
 - Dynamic Typig
@@ -28,7 +28,7 @@ This repo is a result of consistent learning and deep practice.
 
 ---
 
-### 3. Operators 
+### 3. [Operators](./03-Operators/)
 - Arithmetic (+,-,/,*,%)
 - Comparison ( == , === , <= , >= , > , < , etc. )
 - Assignment ( = )
@@ -40,7 +40,7 @@ This repo is a result of consistent learning and deep practice.
 
 ---
 
-### 4. Control Flow
+### 4. [Control Flow](./04-Control-flow/)
 - if / else
 - else-if ladder
 - switch case
@@ -48,7 +48,7 @@ This repo is a result of consistent learning and deep practice.
 
 ---
 
-### 5. Loops
+### 5. [Loops](./05-Loops/)
 - for loop
 - while loop
 - do-while loop
@@ -56,7 +56,7 @@ This repo is a result of consistent learning and deep practice.
 
 ---
 
-### 6. Functions (Deep Dive)
+### 6. [Functions (Deep Dive)](./06-Fucntion/)
 - Function (declaration , expression , Arrow function)
 - Parameters vs arguments
 - Default parameters
@@ -72,7 +72,7 @@ This repo is a result of consistent learning and deep practice.
 
 ---
 
-### 7. Arrays
+### 7. [Arrays](./07-Arrays/)
 - Array basics & indexing
 - push, pop, shift, unshift
 - slice vs splice
@@ -86,7 +86,7 @@ This repo is a result of consistent learning and deep practice.
 
 ---
 
-### 9. Objects
+### 9. [Objects](./08-objects/)
 - Object creation
 - Dot vs Bracket notation
 - Add, update, delete properties
