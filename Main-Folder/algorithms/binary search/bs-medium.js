@@ -179,19 +179,19 @@ console.log(Count([5], 5));
 
 
 
-function Lowerbound(arra,tar){
-    let ans =arra.length;
-    let start =0;
-    let end =arra.length-1;
+function Lowerbound(arra, tar) {
+    let ans = arra.length;
+    let start = 0;
+    let end = arra.length - 1;
 
-    while(start<=end){
-        const mid = Math.floor((start+end)/2);
+    while (start <= end) {
+        const mid = Math.floor((start + end) / 2);
 
-        if(arra[mid]>= tar){
+        if (arra[mid] >= tar) {
             ans = mid;
-            end = mid-1;
-        }else{
-            start = mid+1;
+            end = mid - 1;
+        } else {
+            start = mid + 1;
         }
     }
     return ans;
@@ -199,10 +199,10 @@ function Lowerbound(arra,tar){
 
 
 
-console.log(Lowerbound([1,2,2,2,3,5],2))
-console.log(Lowerbound([1,3,5,7],4))
-console.log(Lowerbound([1,2,3], 0))
-console.log(Lowerbound([5,6,7],1))
+console.log(Lowerbound([1, 2, 2, 2, 3, 5], 2))
+console.log(Lowerbound([1, 3, 5, 7], 4))
+console.log(Lowerbound([1, 2, 3], 0))
+console.log(Lowerbound([5, 6, 7], 1))
 
 
 
@@ -211,30 +211,150 @@ console.log(Lowerbound([5,6,7],1))
 // ---------------------------
 
 // --> Upper Bound same pattern hota hai lowerbound ki tara
-    // bass * Lowerbound   →  ≥
-    //      * Upperbound   →  >
+// bass * Lowerbound   →  ≥
+//      * Upperbound   →  >
 
 
 
-    function Uowerbound(arra,tar){
-    let ans =arra.length;
-    let start =0;
-    let end =arra.length-1;
+function Uowerbound(arra, tar) {
+    let ans = arra.length;
+    let start = 0;
+    let end = arra.length - 1;
 
-    while(start<=end){
-        const mid = Math.floor((start+end)/2);
+    while (start <= end) {
+        const mid = Math.floor((start + end) / 2);
 
-        if(arra[mid]> tar){
+        if (arra[mid] > tar) {
             ans = mid;
-            end = mid-1;
-        }else{
-            start = mid+1;
+            end = mid - 1;
+        } else {
+            start = mid + 1;
         }
     }
     return ans;
 }
 
-console.log(Uowerbound([1,2,2,2,3,5],2))
-console.log(Uowerbound([1,3,5,7],4))
-console.log(Uowerbound([1,2,3], 0))
-console.log(Uowerbound([5,6,7],1))
+console.log(Uowerbound([1, 2, 2, 2, 3, 5], 2))
+console.log(Uowerbound([1, 3, 5, 7], 4))
+console.log(Uowerbound([1, 2, 3], 0))
+console.log(Uowerbound([5, 6, 7], 1))
+
+
+
+
+
+
+
+// Peak Element --> Problem 
+// --> Array diya hai 
+// --> peak element ka index find karo 
+
+// Peak 
+// arra[i] > arra[i-1]
+// arra[i] > arra[i+1]
+
+
+// Key points 
+// mid ko mid+1 se compare karo
+
+
+// Case : A 
+//  arra[mid]  <  arra[mid+1]
+//  -> slid up
+//  -> peak right side me 
+//  -> start = mid+1;
+
+// Case : B
+//  arra[mid] > arra[mid+1]
+//  -> slid down 
+//  -> peak left side  me (mid includes)
+//  -> end = mid
+
+
+
+// ⚠️ Important
+// while (start < end)
+
+
+function findPeak(arr) {
+    let start = 0;
+    let end = arr.length - 1;
+
+    while (start < end) {
+        let mid = Math.floor((start + end) / 2);
+
+        if (arr[mid] < arr[mid + 1]) {
+            start = mid + 1;
+        } else {
+            end = mid;
+        }
+    }
+
+    return start; // peak index
+}
+
+
+console.log(findPeak([1, 3, 5, 4, 2]))
+
+
+
+
+
+// 🔄 Rotated Sorted Array — Search Targe
+
+// --> Key points
+//    * Mid nikal lo --> check kon si side sorted 
+//    * target Compare se phele sorted half detect karna
+
+// Case : A left half sorted 
+//          1. arra[start] <= arra[mid]
+//             * kya start index element mid elememt se chota ya barabar hai 
+//             * arr[start] <= target && target < arr[mid]
+//                   * start element target se  chota ya barabar  hai or target mid element se chota hai 
+
+// Case : B  Right half sorted 
+//          1. arra[mid] < target 
+//           * mid element jab target se chota hai 
+//          2. target <= arra[end]
+//           * target element chota ya barabar hai end element se 
+
+
+
+function searchRotated(arr, target) {
+    let start = 0;
+    let end = arr.length - 1;
+
+    while (start <= end) {
+        let mid = Math.floor((start + end) / 2);
+
+        if (arr[mid] === target) return mid;
+
+        // left half sorted
+        if (arr[start] <= arr[mid]) {
+
+            if (arr[start] <= target && target < arr[mid]) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+
+        }
+        // right half sorted
+        else {
+
+            if (arr[mid] < target && target <= arr[end]) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+
+        }
+    }
+
+    return -1;
+}
+
+
+console.log(searchRotated([4,5,6,7,0,1,2], 0)); // 4
+console.log(searchRotated([4,5,6,7,0,1,2], 6)); // 2
+console.log(searchRotated([4,5,6,7,0,1,2], 3)); // -1
