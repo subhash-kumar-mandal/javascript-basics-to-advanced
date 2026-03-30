@@ -52,3 +52,34 @@
 
 
 
+
+function Longest_subarray(array, k) {
+
+
+    let right = 0;
+    let left = 0;
+    let sum = 0;
+    let max_length = 0;
+
+
+    for (right; right < array.length; right++) {
+        sum += array[right];
+
+        while (sum > k) {
+            sum -= array[left];
+            left++;
+        }
+
+        if (sum <= k) {
+            let find_length = right - left + 1;
+            max_length = Math.max(max_length, find_length)
+        }
+    };
+
+    return max_length;
+
+}
+
+console.log(Longest_subarray([1,2,1,0,1,1,0],4)) // 5 result
+
+
