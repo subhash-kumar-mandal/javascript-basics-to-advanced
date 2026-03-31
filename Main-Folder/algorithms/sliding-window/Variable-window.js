@@ -80,6 +80,108 @@ function Longest_subarray(array, k) {
 
 }
 
-console.log(Longest_subarray([1,2,1,0,1,1,0],4)) // 5 result
+console.log(Longest_subarray([1, 2, 1, 0, 1, 1, 0], 4)) // 5 result
 
 
+
+
+
+// question 1  Longest  subarray with at  most k zeros
+
+function Longest_subarray_zeros(array, k) {
+
+    let left = 0
+    let right = 0;
+    let sum = 0;
+    let Zerocount = 0;
+    let max_length = 0
+
+    for (right; right < array.length; right++) {
+        sum += array[right];
+
+        if (array[right] === 0) {
+            Zerocount++
+        }
+
+        while (Zerocount > k) {
+            sum -= array[left];
+            if (array[left] === 0) Zerocount--;
+
+            left++
+        }
+
+        let find_length = right - left + 1;
+        max_length = Math.max(find_length, max_length)
+
+    }
+    return max_length;
+}
+
+
+console.log("Longest length", Longest_subarray_zeros([1, 0, 1, 1, 0, 1, 0], 2))
+
+
+// question 2 Longest substring with at most k distinct characters
+
+// "abccbaac", k = 2
+
+
+
+function Longest_subarray_k_distinct(array, k) {
+
+    let left = 0
+    let right = 0;
+    const map = new Map()
+    let max_length = 0
+
+    for (right; right < array.length; right++) {
+
+        map.set(array[right], (map.get(array[right]) || 0) + 1);
+
+        while (map.size > k) {
+            map.set(array[left], map.get(array[left]) - 1);
+            if (map.get(array[left]) === 0) map.delete(array[left]);
+
+            left++
+        };
+
+        max_length = right - left + 1 > max_length ? right - left + 1 : max_length;
+
+    }
+    // console.log(right - left + 1)
+    return max_length;
+}
+
+
+console.log(Longest_subarray_k_distinct('abccbaac', 2));
+
+
+
+
+function Longest_subarray_Without_repeating(array) {
+
+    let left = 0
+    let right = 0;
+    const map = new Map()
+    let max_length = 0
+
+    for (right; right < array.length; right++) {
+
+        while (map.has(array[right])) {
+            map.set(array[left], map.get(array[left]) - 1);
+            if (map.get(array[left]) === 0) map.delete(array[left]);
+
+            left++
+        };
+
+        map.set(array[right], (map.get(array[right]) || 0) + 1);
+
+
+        max_length = right - left + 1 > max_length ? right - left + 1 : max_length;
+
+    }
+    return max_length;
+}
+
+
+console.log(Longest_subarray_Without_repeating('abcabcbb'))
