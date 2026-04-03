@@ -286,4 +286,4 @@ console.log(Longest_subarray_Without_repeating('pwwkew'));
 // question  7 thoda twist
 //  eceba ---> k-2
 
-console.log(Longest_subarray_k_distinct('eceba',2))
+console.log(Longest_subarray_k_distinct('eceba',2));
