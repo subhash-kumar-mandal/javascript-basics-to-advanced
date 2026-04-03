@@ -128,7 +128,7 @@ console.log("Longest length", Longest_subarray_zeros([1, 0, 1, 1, 0, 1, 0], 2))
 
 
 function Longest_subarray_k_distinct(array, k) {
-
+    let str ='';
     let left = 0
     let right = 0;
     const map = new Map()
@@ -144,12 +144,18 @@ function Longest_subarray_k_distinct(array, k) {
 
             left++
         };
+        if (right - left + 1 > max_length) {
+            max_length = right - left + 1
+            str = array.slice(left, right + 1)
+        }
 
-        max_length = right - left + 1 > max_length ? right - left + 1 : max_length;
+        // max_length = right - left + 1 > max_length ? right - left + 1 : max_length;
 
     }
     // console.log(right - left + 1)
-    return max_length;
+    return {
+        max_length,
+        str};
 }
 
 
@@ -161,7 +167,7 @@ console.log(Longest_subarray_k_distinct('abccbaac', 2));
 // --->abcabcbb
 
 function Longest_subarray_Without_repeating(array) {
-
+    let str = ''
     let left = 0
     let right = 0;
     const map = new Map()
@@ -178,11 +184,18 @@ function Longest_subarray_Without_repeating(array) {
 
         map.set(array[right], (map.get(array[right]) || 0) + 1);
 
-
-        max_length = right - left + 1 > max_length ? right - left + 1 : max_length;
+        if (right - left + 1 > max_length) {
+            max_length = right - left + 1
+            str = array.slice(left, right + 1)
+        }
+        // max_length = right - left + 1 > max_length ? right - left + 1 : max_length;
 
     }
-    return max_length;
+
+    return {
+        max_length,
+        str
+    };
 }
 
 
@@ -213,7 +226,7 @@ function Allcount_subarray_k_distinct(array, k) {
             }
             left++
         };
-       
+
         count += (right - left + 1)
 
 
@@ -223,3 +236,54 @@ function Allcount_subarray_k_distinct(array, k) {
 
 
 console.log(Allcount_subarray_k_distinct('aaabbcc', 2));
+
+
+
+// 5 question  analytics
+//   [ 10,20,30,40,50,10,20]
+//   k-- > 3
+
+
+function Find(arr, k) {
+    let max = 0;
+    let find = [];
+
+    for (let i = 0; i <= arr.length - k; i++) {
+        let sum = 0;
+        const arra = [];
+        for (let j = i; j < i + k; j++) {
+            sum += arr[j];
+            arra.push(arr[j]);
+        }
+        if (sum > max) {
+            max = sum;
+            find = arra
+        }
+
+    }
+    return {
+        max, find
+    }
+};
+
+console.log(Find([10, 20, 30, 40, 50, 10, 20], 3));
+
+
+//  question 6 server Monitoriy 
+// [1,1,0,1,0,1,1,1]
+
+
+console.log('Longest_subarray_zeros --->', Longest_subarray_zeros([1, 1, 0, 1, 0, 1, 1, 0, 1], 2));
+
+
+
+// question  7 (security/text)
+// pwwkew
+
+console.log(Longest_subarray_Without_repeating('pwwkew'));
+
+
+// question  7 thoda twist
+//  eceba ---> k-2
+
+console.log(Longest_subarray_k_distinct('eceba',2))
