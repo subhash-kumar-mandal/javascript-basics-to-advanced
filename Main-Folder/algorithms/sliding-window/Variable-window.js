@@ -156,7 +156,9 @@ function Longest_subarray_k_distinct(array, k) {
 console.log(Longest_subarray_k_distinct('abccbaac', 2));
 
 
+// 3 question  Longest substring without repeating character 
 
+// --->abcabcbb
 
 function Longest_subarray_Without_repeating(array) {
 
@@ -185,3 +187,39 @@ function Longest_subarray_Without_repeating(array) {
 
 
 console.log(Longest_subarray_Without_repeating('abcabcbb'))
+
+
+
+
+
+
+// 4 question Longest substring  with at most k distinct 
+// --- > eceba
+// --  > k-2
+
+function Allcount_subarray_k_distinct(array, k) {
+
+    let left = 0
+    const map = new Map()
+    let count = 0
+
+    for (let right = 0; right < array.length; right++) {
+        map.set(array[right], (map.get(array[right]) || 0) + 1);
+
+        while (map.size > k) {
+            map.set(array[left], map.get(array[left]) - 1);
+            if (map.get(array[left]) === 0) {
+                map.delete(array[left]);
+            }
+            left++
+        };
+       
+        count += (right - left + 1)
+
+
+    }
+    return count
+}
+
+
+console.log(Allcount_subarray_k_distinct('aaabbcc', 2));
